@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import { useSelector } from "react-redux";
+import { TopBar } from "../components";
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
-}
+  const { user } = useSelector((state) => state.user);
 
-export default Home
+  return (
+    <div className="home w-full px-0 lg:px-10 pb-20 2xl:px-40 bg-bgColor lg:rounded-lg h-screen overflow-hidden">
+      <TopBar/>
+    </div>
+  );
+};
+
+export default Home;
