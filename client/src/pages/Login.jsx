@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { TbSocial } from "react-icons/tb";
 import { BsShare } from "react-icons/bs";
-import {AiOutlineInteraction} from "react-icons/ai"
-import {ImConnection} from "react-icons/im"
+import { AiOutlineInteraction } from "react-icons/ai";
+import { ImConnection } from "react-icons/im";
 import { CustomButton, Loading, TextInput } from "../components";
 import { useDispatch } from "react-redux";
 import { BgImage } from "../assets";
@@ -18,10 +18,7 @@ const Login = () => {
     mode: "onChange",
   });
 
-
-  const onSubmit = async(data)=>{
-
-  }
+  const onSubmit = async (data) => {};
 
   const [errMsg, setErrMsg] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,7 +36,7 @@ const Login = () => {
             <div className="p-2 bg-[#065ad8] rounded text-white">
               <TbSocial />
             </div>
-            <span className="text-2xl text-[#065ad8]" font-semibold>
+            <span className="text-2xl text-[#065ad8] font-semibold" >
               Connectify
             </span>
           </div>
@@ -49,8 +46,10 @@ const Login = () => {
           </p>
           <span className="text-sm mt-2 text-ascent-2">Welcome Back</span>
 
-          <form className="py-8 flex flex-col gap-5"
-          onSubmit={handleSubmit(onSubmit)}>
+          <form
+            className="py-8 flex flex-col gap-5"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <TextInput
               name="email"
               placeholder="email@example.com"
@@ -64,12 +63,12 @@ const Login = () => {
               error={errors.email ? errors.email.message : ""}
             />
             <TextInput
-              name='password'
-              label='Password'
-              placeholder='Password'
-              type='password'
-              styles='w-full rounded-full'
-              labelStyle='ml-2'
+              name="password"
+              label="Password"
+              placeholder="Password"
+              type="password"
+              styles="w-full rounded-full"
+              labelStyle="ml-2"
               register={register("password", {
                 required: "Password is required!",
               })}
@@ -140,11 +139,11 @@ const Login = () => {
             </div>
           </div>
 
-          <div className='mt-16 text-center'>
-            <p className='text-white text-base'>
+          <div className="mt-16 text-center">
+            <p className="text-white text-base">
               Connect with friedns & have share for fun
             </p>
-            <span className='text-sm text-white/80'>
+            <span className="text-sm text-white/80">
               Share memories with friends and the world.
             </span>
           </div>
