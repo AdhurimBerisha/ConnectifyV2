@@ -43,7 +43,7 @@ export const handleFileUpload = async (uploadFile) => {
   }
 };
 
-export const fetchPost = async (token, dispatch, uri, data) => {
+export const fetchPosts = async (token, dispatch, uri, data) => {
   try {
     const res = await apiRequest({
       url: uri || "/posts",
