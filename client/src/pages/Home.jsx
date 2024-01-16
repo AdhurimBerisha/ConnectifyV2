@@ -69,7 +69,7 @@ const Home = () => {
         });
         setFile(null);
         setErrMsg("");
-        await fetchPost;
+        await fetchPost();
       }
       setPosting(false);
     } catch (error) {
