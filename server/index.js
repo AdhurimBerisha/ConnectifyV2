@@ -5,11 +5,13 @@ import morgan from "morgan";
 import bodyParser from "body-parser";
 import path from "path";
 
+
 // security packages
 import helmet from "helmet";
 import dbConnection from "./dbConfig/index.js";
 import errorMiddleware from "./middleware/errorMiddleware.js";
 import router from "./routes/index.js";
+import mysqlConnection from "./dbConfig/mysql.js";
 
 const __dirname = path.resolve(path.dirname(""));
 
@@ -22,6 +24,7 @@ app.use(express.static(path.join(__dirname, "views/build")))
 const PORT = process.env.PORT || 8800;
 
 dbConnection();
+mysqlConnection();
 
 
 app.use(helmet());
