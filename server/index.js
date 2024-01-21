@@ -8,7 +8,7 @@ import path from "path";
 
 // security packages
 import helmet from "helmet";
-import dbConnection from "./dbConfig/index.js";
+import mongodbConnection from "./dbConfig/index.js";
 import errorMiddleware from "./middleware/errorMiddleware.js";
 import router from "./routes/index.js";
 import mysqlConnection from "./dbConfig/mysql.js";
@@ -23,7 +23,8 @@ app.use(express.static(path.join(__dirname, "views/build")))
 
 const PORT = process.env.PORT || 8800;
 
-dbConnection();
+mongodbConnection();
+
 mysqlConnection();
 
 
