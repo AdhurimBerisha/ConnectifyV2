@@ -47,7 +47,7 @@ const Login = () => {
     <div className="login">
       <div className="card">
         <div className="left">
-          <h1>Hello World.</h1>
+          <h1>Connectify</h1>
           <p>
             Unlock powerful tools and precise control with the admin account –
             your gateway to seamless app administration and strategic oversight.
