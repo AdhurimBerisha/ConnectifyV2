@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
-import { FaBars, FaUserAlt, FaRegChartBar, FaCommentAlt, FaShoppingBag, FaThList } from 'react-icons/fa';
+import React, { useState, useContext, useEffect } from 'react';
+import { FaBars, FaUserAlt, FaRegChartBar, FaCommentAlt, FaShoppingBag, FaThList, FaSignOutAlt } from 'react-icons/fa';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Users from "../pages/Users";
 import Posts from "../pages/Posts";
 import Comments from "../pages/Comments";
 import Likes from "../pages/Likes";
 import Events from "../pages/Events";
+import { AuthContext } from "../context/authContext"; 
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { logout } = useContext(AuthContext); 
+
   const [isOpen, setIsOpen] = useState(false);
   const [activePage, setActivePage] = useState(null);
 
@@ -20,10 +26,37 @@ const Sidebar = () => {
     { path: "/comments", name: "Comments", icon: <FaCommentAlt /> },
     { path: "/likes", name: "Likes", icon: <FaShoppingBag /> },
     { path: "/events", name: "Events", icon: <FaThList /> },
+    { path: "/logout", name: "Logout", icon: <FaSignOutAlt /> },
   ];
 
+  useEffect(() => {
+    const handlePopState = () => {
+      if (location.pathname !== '/adminl') {
+        
+        navigate('/adminl', { replace: true });
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [location.pathname, navigate]);
+
   const handleNavigation = (name) => {
-    setActivePage(name);
+    if (name === 'Logout') {
+      
+      localStorage.removeItem('authToken');
+
+      
+      logout();
+
+      
+      navigate('/adminl', { replace: true }); 
+    } else {
+      setActivePage(name);
+    }
   };
 
   const renderComponent = () => {

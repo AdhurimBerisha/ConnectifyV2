@@ -23,8 +23,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      // Simulating a login request
-      // Replace this with your actual login logic
+      
       const response = await axios.post(
         "http://localhost:8800/api/auth/login",
         formData,
@@ -33,10 +32,8 @@ const Login = () => {
         }
       );
 
-      // Handle successful login, e.g., redirect or update UI
       console.log("Login successful", response.data);
 
-      // Navigate to the "dummy" page after successful login
       navigate("/dummy");
     } catch (error) {
       setError("Invalid username or password");

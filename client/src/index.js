@@ -5,14 +5,17 @@ import { Provider } from "react-redux";
 import "./index.css";
 import App from "./App";
 import { store } from "./redux/store";
+import { AuthContextProvider } from "../src/context/authContext"; // Update the path accordingly
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <AuthContextProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthContextProvider>
     </Provider>
   </React.StrictMode>
 );

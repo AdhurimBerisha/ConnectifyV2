@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/register.scss";
 import { useState } from "react";
 import axios from "axios";
 
 const Register = () => {
+  const navigate = useNavigate(); // Hook to navigate programmatically
+
   const [inputs, setInputs] = useState({
     username: "",
     email: "",
@@ -23,11 +25,11 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:8800/api/auth/register", inputs);
-      setSuccessMessage("User has been created successfully!");
-      setErr(null); // Clear any previous error message
+      const response = await axios.post("http://localhost:8800/api/auth/register", inputs);
 
-      // Reset input fields after successful registration
+      setSuccessMessage(response.data);
+      setErr(null);
+
       setInputs({
         username: "",
         email: "",
@@ -35,8 +37,11 @@ const Register = () => {
         firstName: "",
         lastName: "",
       });
+
+
+      navigate('/adminl');
     } catch (err) {
-      setSuccessMessage(null); // Clear any previous success message
+      setSuccessMessage(null);
       setErr(err.response?.data || "An unexpected error occurred.");
     }
   };
