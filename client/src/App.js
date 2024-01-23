@@ -10,6 +10,11 @@ import {
   AdminL,
   Dummy,
 } from "./pages";
+import Users from "./pages/Users";
+import Posts from "./pages/Posts";
+import Events from "./pages/Events";
+import Comments from "./pages/Comments";
+import Likes from "./pages/Likes";
 
 function Layout() {
   const { user } = useSelector((state) => state.user);
@@ -39,6 +44,11 @@ function App() {
         <Route path="/dummy" element={<Dummy />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/posts" element={<Posts />} />
+        <Route path="/comments" element={<Comments />} />
+        <Route path="/likes" element={<Likes />} />
+        <Route path="/events" element={<Events />} />
       </Routes>
     </div>
   );

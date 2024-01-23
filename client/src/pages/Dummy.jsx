@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
+import '../styles/app.scss';
+import Sidebar from '../components/Sidebar.jsx';
 
-const dummy = () => {
+const App = () => {
   return (
-    <div>
-      dummy
-    </div>
-  )
-}
+    <Sidebar />
+  );
+};
 
-export default dummy
+export default App;
