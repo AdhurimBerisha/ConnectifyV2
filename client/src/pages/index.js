@@ -5,6 +5,6 @@ import AdminR from "./AdminR";
 import AdminL from "./AdminL";
 import Profile from "./Profile";
 import ResetPassword from "./ResetPassword";
-import Dummy from "./Dummy";
+import Panel from "./Panel";
 
-export { Login, Home, Register, Profile, ResetPassword, AdminR, AdminL, Dummy };
+export { Login, Home, Register, Profile, ResetPassword, AdminR, AdminL, Panel };

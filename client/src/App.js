@@ -8,7 +8,7 @@ import {
   ResetPassword,
   AdminR,
   AdminL,
-  Dummy,
+  Panel,
 } from "./pages";
 import Users from "./pages/Users";
 import Posts from "./pages/Posts";
@@ -41,7 +41,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/adminr" element={<AdminR />} />
         <Route path="/adminl" element={<AdminL />} />
-        <Route path="/dummy" element={<Dummy />} />
+        <Route path="/panel" element={<Panel />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/users" element={<Users />} />

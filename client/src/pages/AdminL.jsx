@@ -34,7 +34,7 @@ const Login = () => {
 
       console.log("Login successful", response.data);
 
-      navigate("/dummy");
+      navigate("/panel");
     } catch (error) {
       setError("Invalid username or password");
     }
