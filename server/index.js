@@ -12,6 +12,8 @@ import errorMiddleware from "./middleware/errorMiddleware.js";
 import router from "./routes/index.js";
 import mysqlConnection from "./dbConfig/mysql.js";
 import cookieParser from "cookie-parser";
+import bookRoutes from "./routes/bookRoutes.js";
+import customRouter from "./crud/index.js";
 
 const __dirname = path.resolve(path.dirname(""));
 
@@ -39,6 +41,7 @@ app.use(
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/books", bookRoutes);
 
 const PORT = process.env.PORT || 5000;
 

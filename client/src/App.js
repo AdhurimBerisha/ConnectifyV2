@@ -15,6 +15,9 @@ import Posts from "./pages/Posts";
 import Events from "./pages/Events";
 import Comments from "./pages/Comments";
 import Likes from "./pages/Likes";
+import Books from "./pages/Books";
+import Add from "./pages/Add";
+import Update from "./pages/Update";
 
 function Layout() {
   const { user } = useSelector((state) => state.user);
@@ -49,6 +52,9 @@ function App() {
         <Route path="/comments" element={<Comments />} />
         <Route path="/likes" element={<Likes />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/books" element={<Books />} />
+          <Route path="/add" element={<Add />} />
+          <Route path="/update/:id" element={<Update />} />
       </Routes>
     </div>
   );

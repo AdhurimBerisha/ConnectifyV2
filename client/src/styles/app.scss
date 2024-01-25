@@ -1,54 +1,84 @@
-*{
-    margin:0;
-    padding:0;
-    text-decoration: none;
-}
-body{
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Add box-sizing for better sizing calculation */
+  }
+  
+  body {
     background-color: rgb(12, 12, 12);
-    
-}
-.container{
-    display:flex;
-}
-main{
-    width: 100%;
-    padding: 20px;
-}
-.sidebar{
-    background:rgb(9,11,13) ;
-    color: #fff;
+    font-family: 'Arial', sans-serif; /* Add a default font family */
+    color: #fff; /* Set default text color */
+  }
+  
+  .container {
+    display: flex;
     height: 100vh;
+  }
+  
+  .sidebar {
+    background: rgb(9, 11, 13);
     width: 200px;
     transition: all 0.5s;
-}
-.top_section{
     display: flex;
-    align-items:center;
-    padding:20px 15px;
-}
-.logo{
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  .top_section {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
     font-size: 30px;
-}
-.bars{
+    margin-left: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .bars {
     display: flex;
     font-size: 25px;
-    margin-left: 50px;
-}
-.link{
+    margin-left: 10px;
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+  
+  .link {
     display: flex;
     color: #fff;
-    padding: 10px 15px;
+    padding: 11px 15px; /* Adjust the padding here */
     gap: 15px;
     transition: all 0.5s;
-}
-.link:hover{
+    cursor: pointer;
+  }
+  
+  .link:hover {
     background: rgb(15, 15, 15);
     transition: all 0.5s;
-}
-.active{
+  }
+  
+  .active {
     background: rgb(6, 90, 216);
     color: #000;
-}
-.icon, .link_text{
+  }
+  
+  .icon,
+  .link_text {
     font-size: 20px;
-}
+  }
+  
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    flex-grow: 1; /* Allow the content to grow and take up the remaining space */
+  }
+  
+  main {
+    width: 100%;
+    padding: 20px;
+  }
+  
