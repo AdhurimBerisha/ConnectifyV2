@@ -1,0 +1,113 @@
+/* Add these styles to your book.scss file */
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.book-widget {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin-bottom: 20px; /* Add margin-bottom for spacing between book widgets */
+}
+
+.book-widget h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.book-widget p {
+  color: white;
+  margin: 5px 0;
+}
+
+.book-widget span {
+  font-weight: bold;
+  color: white;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+.actions button {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.actions a button {
+  background-color: #007bff;
+}
+
+.form {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+
+  background-color: rgba(178, 212, 252, 0.05);
+  color: white;
+  border-radius: 10px;
+  resize: none;
+}
+
+.form button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: #45a049;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.addHome {
+  background-color: rgb(17, 161, 17);
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px; /* Add margin-bottom for spacing between button and widgets */
+}
+
+.addHome:hover {
+  background-color: green;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  padding-bottom: 30px;
+}

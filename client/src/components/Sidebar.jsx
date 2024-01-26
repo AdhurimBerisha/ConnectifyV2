@@ -6,15 +6,16 @@ import Posts from "../pages/Posts";
 import Comments from "../pages/Comments";
 import Likes from "../pages/Likes";
 import Events from "../pages/Events";
-import { AuthContext } from "../context/authContext"; 
+import { AuthContext } from "../context/authContext";
 
 const Sidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { logout } = useContext(AuthContext); 
+  const { logout } = useContext(AuthContext);
 
   const [isOpen, setIsOpen] = useState(false);
-  const [activePage, setActivePage] = useState(null);
+  // Initialize the activePage state with 'Events'
+  const [activePage, setActivePage] = useState('Events');
 
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -32,7 +33,6 @@ const Sidebar = () => {
   useEffect(() => {
     const handlePopState = () => {
       if (location.pathname !== '/adminl') {
-        
         navigate('/adminl', { replace: true });
       }
     };
@@ -46,14 +46,9 @@ const Sidebar = () => {
 
   const handleNavigation = (name) => {
     if (name === 'Logout') {
-      
       localStorage.removeItem('authToken');
-
-      
       logout();
-
-      
-      navigate('/adminl', { replace: true }); 
+      navigate('/adminl', { replace: true });
     } else {
       setActivePage(name);
     }
@@ -80,11 +75,11 @@ const Sidebar = () => {
     <div className="container">
       <div style={{ width: isOpen ? "200px" : "50px" }} className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
         <div className="top_section">
-          <h1 style={{ display: isOpen ? "block" : "none" }} className="logo">
+          <h1 style={{ display: isOpen ? "block" : "none", color: "white" }} className="logo">
             Logo
           </h1>
           <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
-            <FaBars onClick={toggle} />
+            <FaBars onClick={toggle} style={{ color: "white" }} />
           </div>
         </div>
         {menuItem.map((item, index) => (

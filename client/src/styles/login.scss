@@ -30,9 +30,6 @@
         line-height: 100px;
       }
 
-      p {
-      }
-
       span {
         font-size: 14px;
       }
@@ -56,6 +53,7 @@
       flex-direction: column;
       gap: 50px;
       justify-content: center;
+      align-items: center; // Add this line to center items horizontally
 
       h1 {
         color: white;
@@ -67,6 +65,7 @@
         display: flex;
         flex-direction: column;
         gap: 30px;
+        align-items: center; // Add this line to center items horizontally
 
         input {
           border: none;
@@ -74,6 +73,7 @@
           background-color: rgba(178, 212, 252, 0.05);
           color: white;
           border-radius: 10px;
+          width: 125%; // Add this line to make inputs fill the container width
         }
 
         button {

@@ -15,9 +15,7 @@ import Posts from "./pages/Posts";
 import Events from "./pages/Events";
 import Comments from "./pages/Comments";
 import Likes from "./pages/Likes";
-import Books from "./pages/Books";
-import Add from "./pages/Add";
-import Update from "./pages/Update";
+import AddEvents from "./pages/AddEvents";
 
 function Layout() {
   const { user } = useSelector((state) => state.user);
@@ -44,7 +42,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/adminr" element={<AdminR />} />
         <Route path="/adminl" element={<AdminL />} />
-        <Route path="/panel" element={<Panel />} />
+        <Route path="/panel/*" element={<Panel />} />
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/users" element={<Users />} />
@@ -52,9 +50,7 @@ function App() {
         <Route path="/comments" element={<Comments />} />
         <Route path="/likes" element={<Likes />} />
         <Route path="/events" element={<Events />} />
-        <Route path="/books" element={<Books />} />
-          <Route path="/add" element={<Add />} />
-          <Route path="/update/:id" element={<Update />} />
+        <Route path="/addEvents" element={<AddEvents />} />
       </Routes>
     </div>
   );

@@ -1,18 +1,14 @@
 // Events.jsx
 import React from 'react';
-import Books from './Books';
-import Add from './Add';
-import Update from './Update';
+import AddEvents from './AddEvents';
 import { Route, Routes } from 'react-router-dom';
-import "../styles/book.scss";
+import "../styles/event.scss";
 
 const Events = () => {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<Books />} />
-                <Route path="/add" element={<Add />} />
-                <Route path="/update/:id" element={<Update />} />
+                <Route path="/" element={<AddEvents />} />
             </Routes>
         </div>
     );

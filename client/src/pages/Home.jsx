@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   CustomButton,
   EditProfile,
+  EventsCard,
   FriendsCard,
   Loading,
   PostCard,
@@ -26,6 +27,7 @@ import {
 } from "../utils";
 import { UserLogin } from "../redux/userSlice";
 
+
 const Home = () => {
   const { user, edit } = useSelector((state) => state.user);
   const { posts } = useSelector((state) => state.posts);
@@ -35,6 +37,7 @@ const Home = () => {
   const [file, setFile] = useState(null);
   const [posting, setPosting] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [events, setEvents] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -150,13 +153,36 @@ const Home = () => {
     dispatch(UserLogin(newData));
   };
 
+  const getAllEvents = async () => {
+    try {
+      const response = await apiRequest({
+        url: '/api/events',
+        token: user?.token,
+        method: 'GET',
+      });
+
+      console.log('Response:', response)
+  
+      if (response.status === 'failed') {
+        console.error(response);
+      } else {
+        setEvents(response.data);
+      }
+    } catch (error) {
+      console.error('Error fetching events:', error);
+    }
+  };
+  
+
   useEffect(() => {
     setLoading(true);
     getUser();
     fetchPost();
     fetchFriendRequests();
     fetchSuggestedFriends();
+    getAllEvents(); // Ensure this is awaited if needed
   }, []);
+
 
   return (
     <>
@@ -168,6 +194,7 @@ const Home = () => {
           <div className="hidden w-1/3 lg:w-1/4 h-full md:flex flex-col gap-6 overflow-y-auto">
             <ProfileCard user={user} />
             <FriendsCard friends={user?.friends} />
+            <EventsCard events={events} />
           </div>
 
           {/* CENTER */}
