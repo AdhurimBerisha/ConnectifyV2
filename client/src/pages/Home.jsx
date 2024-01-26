@@ -207,10 +207,10 @@ const Home = () => {
               </div>
               <div className="w-full flex flex-col gap-4 pt-4">
                 {events.length > 0 ? (
-                  events.map((event) => (
+                  events.map((event, index) => (
                     // Inside the map function for rendering events
                     <div
-                      key={event._id}
+                      key={index}
                       className="flex items-center justify-between bg-primary p-4 rounded-md  transition-transform transform hover:scale-105 text-white border-b border-gray-300"
                     >
                       <div className="flex-1 pr-4">
