@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   CustomButton,
   EditProfile,
-  EventsCard,
   FriendsCard,
   Loading,
   PostCard,
@@ -26,9 +25,10 @@ import {
   sendFriendRequest,
 } from "../utils";
 import { UserLogin } from "../redux/userSlice";
-
+import EventDisplay from "../components/EventDisplay";
 
 const Home = () => {
+  const [events, setEvents] = useState([]);
   const { user, edit } = useSelector((state) => state.user);
   const { posts } = useSelector((state) => state.posts);
   const [friendRequest, setFriendRequest] = useState([]);
@@ -37,7 +37,7 @@ const Home = () => {
   const [file, setFile] = useState(null);
   const [posting, setPosting] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [events, setEvents] = useState([]);
+  const [forceRender, setForceRender] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -86,6 +86,7 @@ const Home = () => {
 
     setLoading(false);
   };
+
   const handleLikePost = async (uri) => {
     await likePost({ uri: uri, token: user?.token });
 
@@ -153,36 +154,42 @@ const Home = () => {
     dispatch(UserLogin(newData));
   };
 
-  const getAllEvents = async () => {
-    try {
-      const response = await apiRequest({
-        url: '/api/events',
-        token: user?.token,
-        method: 'GET',
-      });
-
-      console.log('Response:', response)
-  
-      if (response.status === 'failed') {
-        console.error(response);
-      } else {
-        setEvents(response.data);
-      }
-    } catch (error) {
-      console.error('Error fetching events:', error);
-    }
-  };
-  
-
   useEffect(() => {
     setLoading(true);
     getUser();
     fetchPost();
     fetchFriendRequests();
     fetchSuggestedFriends();
-    getAllEvents(); // Ensure this is awaited if needed
   }, []);
 
+  const fetchEvents = async () => {
+    try {
+      const res = await apiRequest({
+        url: "/api/events",
+        token: user?.token,
+        method: "GET",
+      });
+
+      // console.log("Events API Response:", res);
+
+      // Log the entire response object
+      // console.log("Full API Response:", res);
+
+      // Set events based on the actual structure of the API response
+      setEvents(res || []);
+      setLoading(false);
+      setForceRender((prev) => !prev);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  // console.log(events);
 
   return (
     <>
@@ -194,7 +201,33 @@ const Home = () => {
           <div className="hidden w-1/3 lg:w-1/4 h-full md:flex flex-col gap-6 overflow-y-auto">
             <ProfileCard user={user} />
             <FriendsCard friends={user?.friends} />
-            <EventsCard events={events} />
+            <div className="w-full bg-primary shadow-sm rounded-lg px-6 py-5">
+              <div className="flex items-center justify-between text-lg text-ascent-1 border-b border-[#66666645]">
+                <span>Upcoming Events</span>
+              </div>
+              <div className="w-full flex flex-col gap-4 pt-4">
+                {events.length > 0 ? (
+                  events.map((event) => (
+                    // Inside the map function for rendering events
+                    <div
+                      key={event._id}
+                      className="flex items-center justify-between bg-primary p-4 rounded-md  transition-transform transform hover:scale-105 text-white border-b border-gray-300"
+                    >
+                      <div className="flex-1 pr-4">
+                        <p className="text-lg font-semibold">{event.title}</p>
+                        <p className="text-sm text-gray-500">{event.desc}</p>
+                      </div>
+                      <div className="flex flex-col text-right">
+                        <p className="text-sm text-gray-500">{event.date}</p>
+                        <p className="text-sm text-gray-500">{event.place}</p>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p>Nothing here</p>
+                )}
+              </div>
+            </div>
           </div>
 
           {/* CENTER */}
