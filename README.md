@@ -25,11 +25,11 @@ npm start
 
 # TechStack
 ## Frontend
-ReactJs
-Tailwind CSS / SCSS
+ReactJs  
+Tailwind CSS / SCSS  
 ## Backend
-NodeJS
-ExpressJS
-MySQL - SQL database
-MongoDB - NoSQL database
+NodeJS  
+ExpressJS  
+MySQL - SQL database  
+MongoDB - NoSQL database  
 
