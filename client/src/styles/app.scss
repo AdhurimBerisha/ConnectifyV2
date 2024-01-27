@@ -1,12 +1,12 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Add box-sizing for better sizing calculation */
+    box-sizing: border-box; 
   }
   
   body {
     background-color: rgb(12, 12, 12);
-    font-family: 'Arial', sans-serif; /* Add a default font family */
+    font-family: 'Arial', sans-serif; 
   }
   
   .container {
@@ -46,7 +46,7 @@
   .link {
     display: flex;
     color: #fff;
-    padding: 11px 15px; /* Adjust the padding here */
+    padding: 11px 15px; 
     gap: 15px;
     transition: all 0.5s;
     cursor: pointer;
@@ -73,7 +73,7 @@
     align-items: center;
     text-align: center;
     color: white;
-    flex-grow: 1; /* Allow the content to grow and take up the remaining space */
+    flex-grow: 1; 
   }
   
   main {

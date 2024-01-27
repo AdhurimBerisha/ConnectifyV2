@@ -79,7 +79,7 @@ const Sidebar = () => {
             Logo
           </h1>
           <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
-            <FaBars onClick={toggle} style={{ color: "white" }} />
+            <FaBars onClick={toggle} style={{ color: "white", marginBottom:"30px" }} />
           </div>
         </div>
         {menuItem.map((item, index) => (
@@ -98,7 +98,7 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-      <div className={`content ${isOpen ? 'shifted' : ''}`} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', color:'white' }}>
+      <div className={`content ${isOpen ? 'shifted' : ''}`} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', color:'white', marginLeft: isOpen ? "330px" : "550px" }}>
         <div className="selected-item">
           {renderComponent()}
         </div>

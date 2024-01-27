@@ -170,12 +170,6 @@ const Home = () => {
         method: "GET",
       });
 
-      // console.log("Events API Response:", res);
-
-      // Log the entire response object
-      // console.log("Full API Response:", res);
-
-      // Set events based on the actual structure of the API response
       setEvents(res || []);
       setLoading(false);
       setForceRender((prev) => !prev);
@@ -188,8 +182,6 @@ const Home = () => {
   useEffect(() => {
     fetchEvents();
   }, []);
-
-  // console.log(events);
 
   return (
     <>
@@ -208,7 +200,6 @@ const Home = () => {
               <div className="w-full flex flex-col gap-4 pt-4">
                 {events.length > 0 ? (
                   events.map((event, index) => (
-                    // Inside the map function for rendering events
                     <div
                       key={index}
                       className="flex items-center justify-between bg-primary p-4 rounded-md  transition-transform transform hover:scale-105 text-white border-b border-gray-300"
@@ -347,7 +338,7 @@ const Home = () => {
             )}
           </div>
 
-          {/* RIGJT */}
+          {/* RIGHT */}
           <div className="hidden w-1/4 h-full lg:flex flex-col gap-8 overflow-y-auto">
             {/* FRIEND REQUEST */}
             <div className="w-full bg-primary shadow-sm rounded-lg px-6 py-5">

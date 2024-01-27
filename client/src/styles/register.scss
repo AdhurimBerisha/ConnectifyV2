@@ -29,16 +29,16 @@
       h1 {
         font-size: 100px;
         line-height: 100px;
-        text-align: center; // Center the text
+        text-align: center; 
       }
 
       p {
-        text-align: center; // Center the text
+        text-align: center; 
       }
 
       span {
         font-size: 14px;
-        text-align: center; // Center the text
+        text-align: center;
       }
 
       button {
@@ -50,7 +50,7 @@
         color: rgb(6, 90, 216);
         font-weight: bold;
         cursor: pointer;
-        margin: 0 auto; // Center the button horizontally
+        margin: 0 auto; 
       }
     }
 
@@ -61,21 +61,20 @@
       flex-direction: column;
       gap: 50px;
       justify-content: center;
-      align-items: center; // Center items horizontally
-
+      align-items: center; 
       h1 {
         color: white;
         font-weight: bold;
         font-size: 25px;
-        margin-bottom: 20px; // Add margin for spacing between h1 and inputs
-        text-align: center; // Center the text
+        margin-bottom: 20px; 
+        text-align: center; 
       }
 
       form {
         display: flex;
         flex-direction: column;
         gap: 30px;
-        align-items: center; // Center items horizontally
+        align-items: center;
 
         input {
           border: none;
@@ -83,7 +82,7 @@
           background-color: rgba(178, 212, 252, 0.05);
           color: white;
           border-radius: 10px;
-          width: 125%; // Make inputs fill the container width
+          width: 125%; 
         }
 
         button {
@@ -95,7 +94,7 @@
           color: white;
           font-weight: bold;
           cursor: pointer;
-          margin: 0 auto; // Center the button horizontally
+          margin: 0 auto; 
         }
       }
     }

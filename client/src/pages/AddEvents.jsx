@@ -72,7 +72,7 @@ const AddEvents = () => {
       setShowAddForm(false);
       setError(false);
 
-      // Refetch the data to update the events list
+      
       fetchAllEvents();
     } catch (err) {
       console.log(err);
@@ -94,7 +94,7 @@ const AddEvents = () => {
       setShowAddForm(false);
       setError(false);
 
-      // Refetch the data to update the events list
+      
       fetchAllEvents();
     } catch (err) {
       console.log(err);
@@ -167,7 +167,7 @@ const AddEvents = () => {
           />
           <input
             type="text"
-            placeholder="YY/MM/DD"  // Updated placeholder for the date input
+            placeholder="YY/MM/DD"  
             name="date"
             value={isUpdateMode ? updateEvent.date : newEvent.date}
             onChange={handleChange}

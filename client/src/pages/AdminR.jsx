@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const Register = () => {
-  const navigate = useNavigate(); // Hook to navigate programmatically
+  const navigate = useNavigate(); 
 
   const [inputs, setInputs] = useState({
     username: "",

@@ -33,9 +33,9 @@ app.use(express.urlencoded({ extended: true }));
 // Configure CORS middleware
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow requests from this origin
+    origin: "http://localhost:3000", 
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    credentials: true, 
   })
 );
 
