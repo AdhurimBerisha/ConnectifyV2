@@ -1,15 +1,32 @@
 .books-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Display widgets in three columns */
   gap: 20px;
 }
 
+
+.center {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-left: calc(10% - -50px); /* Adjust the value as needed */
+}
+
+
+.form.shifted {
+  margin-left: 160px; /* Adjust the value as needed */
+  width: 600px;
+}
+
+// style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}
+// style={{ textAlign: 'center', marginTop: '20px' }}
+
 .book-widget {
+  width: 300px;
   background-color: #333;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 300px;
   margin-bottom: 20px; 
   margin: 10px;
 }
@@ -97,15 +114,56 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
+  margin-top: 5px;
+  width: 450px;
+  transform: translateX(60%);
+}
+
+.addHome.showAddForm {
+  transform: translateX(50%);
+  margin-top: -5px;
 }
 
 .addHome:hover {
   background-color: green;
 }
 
+
+
 h1 {
   font-size: 3rem;
   font-weight: bold;
   padding-bottom: 30px;
+  transform: translateX(0%) translateX(var(--translateX));
+  margin-top: 15px;
+}
+
+
+
+
+
+@media  screen and (max-width:992px) {
+  .center{
+  margin-left: -250px
+  }
+  
+  .book-widget{
+    width: 240px;
+  }
+  
+  .form.shifted {
+    margin-left: 150px; /* Adjust the value as needed */
+    width: 600px;
+  }
+
+  .addHome {
+    margin-left: -30px;
+  }
+
+  h1{
+    margin-left: -750px;
+  transform: translateX(25%);
+
+  }
 }

@@ -7,6 +7,7 @@ import Comments from "../pages/Comments";
 import Likes from "../pages/Likes";
 import Events from "../pages/Events";
 import { AuthContext } from "../context/authContext";
+import "../styles/sidebar.scss";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -14,7 +15,6 @@ const Sidebar = () => {
   const { logout } = useContext(AuthContext);
 
   const [isOpen, setIsOpen] = useState(false);
-  // Initialize the activePage state with 'Events'
   const [activePage, setActivePage] = useState('Events');
 
   const toggle = () => {
@@ -79,7 +79,7 @@ const Sidebar = () => {
             Logo
           </h1>
           <div style={{ marginLeft: isOpen ? "50px" : "0px" }} className="bars">
-            <FaBars onClick={toggle} style={{ color: "white", marginBottom:"30px" }} />
+            <FaBars onClick={toggle} style={{ color: "white", marginBottom: "30px" }} />
           </div>
         </div>
         {menuItem.map((item, index) => (
@@ -98,9 +98,11 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-      <div className={`content ${isOpen ? 'shifted' : ''}`} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', textAlign: 'center', color:'white', marginLeft: isOpen ? "330px" : "550px" }}>
-        <div className="selected-item">
-          {renderComponent()}
+      <div className="content-wrapper" style={{marginLeft:'350px'}}>
+        <div className={`content ${isOpen ? 'shifted' : ''}`}>
+          <div className="selected-item">
+            {renderComponent()}
+          </div>
         </div>
       </div>
     </div>

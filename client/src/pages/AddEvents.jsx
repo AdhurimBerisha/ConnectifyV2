@@ -120,79 +120,96 @@ const AddEvents = () => {
   };
 
   return (
-    <div>
-      <h1>Welcome to Events</h1>
+    <div className="center">
+<h1 style={{ '--translateX': showAddForm ? '-16%' : '0' }}>Welcome to Events</h1>
 
-      <div key="events-table" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {events.map((event) => (
-          <div className="book-widget" key={`event-${event.id || "undefined"}`}>
-            <h3>{event.title}</h3>
-            <p>{event.desc}</p>
-            <p>
-              <span>Date:</span> {event.date}
-            </p>
-            <p>
-              <span>Place:</span> {event.place}
-            </p>
-            <div className="actions" key={`actions-${event.id}`}>
-              <button onClick={() => handleDelete(event.id)}>Delete</button>
-              <button
-                onClick={() => toggleUpdateForm(event)}
-                style={{ backgroundColor: '#2196f3', color: 'white' }}
-              >
-                Update
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
 
-      {showAddForm && (
-        <div className="form" key="add-form" style={{ textAlign: 'center', marginTop: '20px' }}>
-          <h2>{isUpdateMode ? "Update Event" : "Add New Event"}</h2>
-          <input
-            type="text"
-            placeholder="Event title"
-            name="title"
-            value={isUpdateMode ? updateEvent.title : newEvent.title}
-            onChange={handleChange}
-          />
-          <textarea
-            rows={5}
-            type="text"
-            placeholder="Event desc"
-            name="desc"
-            value={isUpdateMode ? updateEvent.desc : newEvent.desc}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="YY/MM/DD"  
-            name="date"
-            value={isUpdateMode ? updateEvent.date : newEvent.date}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            placeholder="Event place"
-            name="place"
-            value={isUpdateMode ? updateEvent.place : newEvent.place}
-            onChange={handleChange}
-          />
+  <div className="books-container" key="events-table">
+    {events.map((event) => (
+      <div className="book-widget" key={`event-${event.id || "undefined"}`}>
+        <h3>{event.title}</h3>
+        <p>{event.desc}</p>
+        <p>
+          <span>Date:</span> {event.date}
+        </p>
+        <p>
+          <span>Place:</span> {event.place}
+        </p>
+        <div className="actions" key={`actions-${event.id}`}>
           <button
-            key={isUpdateMode ? "update-event" : "add-event"}
-            onClick={isUpdateMode ? handleUpdateEvent : handleAddEvent}
+            style={{ color: "white", margin: "5px", width: "75px" }}
+            onClick={() => handleDelete(event.id)}
           >
-            {isUpdateMode ? "Update" : "Add"}
+            Delete
           </button>
-          {error && <div key="error" className="error">Something went wrong!</div>}
+          <button
+            onClick={() => toggleUpdateForm(event)}
+            style={{
+              backgroundColor: "#2196f3",
+              color: "white",
+              margin: "5px",
+              width: "75px",
+            }}
+          >
+            Update
+          </button>
         </div>
-      )}
+      </div>
+    ))}
+  </div>
 
-      <button key={`toggle-add-form-${showAddForm}`} className="addHome" onClick={toggleAddForm}>
-        {showAddForm ? "Cancel" : "Add new event"}
+  {showAddForm && (
+    <div className={`form ${showAddForm ? 'shifted' : ''}`} key="add-form" >
+      <h2>{isUpdateMode ? "Update Event" : "Add New Event"}</h2>
+      <input
+        type="text"
+        placeholder="Event title"
+        name="title"
+        value={isUpdateMode ? updateEvent.title : newEvent.title}
+        onChange={handleChange}
+      />
+      <textarea
+        rows={5}
+        type="text"
+        placeholder="Event desc"
+        name="desc"
+        value={isUpdateMode ? updateEvent.desc : newEvent.desc}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="YY/MM/DD"
+        name="date"
+        value={isUpdateMode ? updateEvent.date : newEvent.date}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        placeholder="Event place"
+        name="place"
+        value={isUpdateMode ? updateEvent.place : newEvent.place}
+        onChange={handleChange}
+      />
+      <button
+        key={isUpdateMode ? "update-event" : "add-event"}
+        onClick={isUpdateMode ? handleUpdateEvent : handleAddEvent}
+      >
+        {isUpdateMode ? "Update" : "Add"}
       </button>
+      {error && <div key="error" className="error">Something went wrong!</div>}
     </div>
+  )}
+
+<button
+  key={`toggle-add-form-${showAddForm}`}
+  className={`addHome ${showAddForm ? 'showAddForm' : ''}`}
+  onClick={toggleAddForm}
+>
+  {showAddForm ? "Cancel" : "Add new event"}
+</button>
+
+</div>
+
   );
 };
 
