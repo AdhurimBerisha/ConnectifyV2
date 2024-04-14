@@ -1,9 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+
 .books-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Display widgets in three columns */
   gap: 20px;
 }
-
 
 .center {
   display: flex;
@@ -11,7 +16,6 @@
   flex-direction: column;
   margin-left: calc(10% - -50px); /* Adjust the value as needed */
 }
-
 
 .form.shifted {
   margin-left: 160px; /* Adjust the value as needed */
@@ -27,7 +31,7 @@
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
   margin: 10px;
 }
 
@@ -41,7 +45,7 @@
   color: white;
   margin: 5px 0;
 }
-// 
+//
 .book-widget span {
   font-weight: bold;
   color: white;
@@ -129,8 +133,6 @@
   background-color: green;
 }
 
-
-
 h1 {
   font-size: 3rem;
   font-weight: bold;
@@ -139,19 +141,15 @@ h1 {
   margin-top: 15px;
 }
 
-
-
-
-
-@media  screen and (max-width:992px) {
-  .center{
-  margin-left: -250px
+@media screen and (max-width: 992px) {
+  .center {
+    margin-left: -250px;
   }
-  
-  .book-widget{
+
+  .book-widget {
     width: 240px;
   }
-  
+
   .form.shifted {
     margin-left: 150px; /* Adjust the value as needed */
     width: 600px;
@@ -161,35 +159,36 @@ h1 {
     margin-left: -30px;
   }
 
-  h1{
+  h1 {
     margin-left: -750px;
-  transform: translateX(25%);
-
+    transform: translateX(25%);
   }
 }
 
-@media screen and (max-width:768px) {
-  .books-container{
+@media screen and (max-width: 768px) {
+  .books-container {
     display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Display widgets in three columns */
-  gap: 20px;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Display widgets in three columns */
+    gap: 20px;
   }
 
-  .addHome{
+  .addHome {
     margin-left: -200px;
   }
 
-  .form.shifted{
+  .form.shifted {
     margin-left: -10px;
     margin-top: 10px;
   }
 
-  .addHome.showAddForm{
+  .addHome.showAddForm {
     margin-left: -160px;
   }
 
-  h1{
+  h1 {
     margin-left: -550px;
   }
-
 }
