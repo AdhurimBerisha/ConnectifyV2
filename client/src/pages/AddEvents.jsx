@@ -40,7 +40,9 @@ const AddEvents = () => {
   const handleDelete = async (eventId) => {
     try {
       await axios.delete(`http://localhost:8800/api/events/${eventId}`);
-      setEvents((prevEvents) => prevEvents.filter((event) => event.id !== eventId));
+      setEvents((prevEvents) =>
+        prevEvents.filter((event) => event.id !== eventId)
+      );
     } catch (error) {
       console.error(error);
     }
@@ -50,12 +52,14 @@ const AddEvents = () => {
     if (isUpdateMode) {
       setUpdateEvent((prev) => ({
         ...prev,
-        [e.target.name]: e.target.type === 'number' ? +e.target.value : e.target.value,
+        [e.target.name]:
+          e.target.type === "number" ? +e.target.value : e.target.value,
       }));
     } else {
       setNewEvent((prev) => ({
         ...prev,
-        [e.target.name]: e.target.type === 'number' ? +e.target.value : e.target.value,
+        [e.target.name]:
+          e.target.type === "number" ? +e.target.value : e.target.value,
       }));
     }
   };
@@ -72,7 +76,6 @@ const AddEvents = () => {
       setShowAddForm(false);
       setError(false);
 
-      
       fetchAllEvents();
     } catch (err) {
       console.log(err);
@@ -82,7 +85,10 @@ const AddEvents = () => {
 
   const handleUpdateEvent = async () => {
     try {
-      await axios.put(`http://localhost:8800/api/events/${updateEvent.id}`, updateEvent);
+      await axios.put(
+        `http://localhost:8800/api/events/${updateEvent.id}`,
+        updateEvent
+      );
       setUpdateEvent({
         id: null,
         title: "",
@@ -94,7 +100,6 @@ const AddEvents = () => {
       setShowAddForm(false);
       setError(false);
 
-      
       fetchAllEvents();
     } catch (err) {
       console.log(err);
@@ -121,96 +126,101 @@ const AddEvents = () => {
 
   return (
     <div className="center">
-<h1 style={{ '--translateX': showAddForm ? '-16%' : '0' }}>Welcome to Events</h1>
-
-
-  <div className="books-container" key="events-table">
-    {events.map((event) => (
-      <div className="book-widget" key={`event-${event.id || "undefined"}`}>
-        <h3>{event.title}</h3>
-        <p>{event.desc}</p>
-        <p>
-          <span>Date:</span> {event.date}
-        </p>
-        <p>
-          <span>Place:</span> {event.place}
-        </p>
-        <div className="actions" key={`actions-${event.id}`}>
-          <button
-            style={{ color: "white", margin: "5px", width: "75px" }}
-            onClick={() => handleDelete(event.id)}
-          >
-            Delete
-          </button>
-          <button
-            onClick={() => toggleUpdateForm(event)}
-            style={{
-              backgroundColor: "#2196f3",
-              color: "white",
-              margin: "5px",
-              width: "75px",
-            }}
-          >
-            Update
-          </button>
+      <h1 className={`${showAddForm ? "showAddForm" : ""} ${events.length > 0 ? "showEvents" : ""}`}>Welcome to Events</h1>
+      {!showAddForm && (
+        <div className="books-container" key="events-table">
+          {events.map((event) => (
+            <div className="book-widget" key={`event-${event.id || "undefined"}`}>
+              <h3>{event.title}</h3>
+              <p>{event.desc}</p>
+              <p>
+                <span>Date:</span> {event.date}
+              </p>
+              <p>
+                <span>Place:</span> {event.place}
+              </p>
+              <div className="actions" key={`actions-${event.id}`}>
+                <button
+                  style={{ color: "white", margin: "5px", width: "75px" }}
+                  onClick={() => handleDelete(event.id)}
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => toggleUpdateForm(event)}
+                  style={{
+                    backgroundColor: "#2196f3",
+                    color: "white",
+                    margin: "5px",
+                    width: "75px",
+                    textAlign:"center",
+                    padding: "8px 3px 8px 5px"
+                  }}
+                >
+                  Update
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-    ))}
-  </div>
+      )}
 
-  {showAddForm && (
-    <div className={`form ${showAddForm ? 'shifted' : ''}`} key="add-form" >
-      <h2>{isUpdateMode ? "Update Event" : "Add New Event"}</h2>
-      <input
-        type="text"
-        placeholder="Event title"
-        name="title"
-        value={isUpdateMode ? updateEvent.title : newEvent.title}
-        onChange={handleChange}
-      />
-      <textarea
-        rows={5}
-        type="text"
-        placeholder="Event desc"
-        name="desc"
-        value={isUpdateMode ? updateEvent.desc : newEvent.desc}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        placeholder="YY/MM/DD"
-        name="date"
-        value={isUpdateMode ? updateEvent.date : newEvent.date}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        placeholder="Event place"
-        name="place"
-        value={isUpdateMode ? updateEvent.place : newEvent.place}
-        onChange={handleChange}
-      />
+      {showAddForm && (
+        <div className={`form ${showAddForm ? "shifted" : ""}`} key="add-form">
+          <h2>{isUpdateMode ? "Update Event" : "Add New Event"}</h2>
+          <input
+            type="text"
+            placeholder="Event title"
+            name="title"
+            value={isUpdateMode ? updateEvent.title : newEvent.title}
+            onChange={handleChange}
+          />
+          <textarea
+            rows={5}
+            type="text"
+            placeholder="Event desc"
+            name="desc"
+            value={isUpdateMode ? updateEvent.desc : newEvent.desc}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="YY/MM/DD"
+            name="date"
+            value={isUpdateMode ? updateEvent.date : newEvent.date}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            placeholder="Event place"
+            name="place"
+            value={isUpdateMode ? updateEvent.place : newEvent.place}
+            onChange={handleChange}
+          />
+          <button
+            key={isUpdateMode ? "update-event" : "add-event"}
+            onClick={isUpdateMode ? handleUpdateEvent : handleAddEvent}
+          >
+            {isUpdateMode ? "Update" : "Add"}
+          </button>
+          {error && (
+            <div key="error" className="error">
+              Something went wrong!
+            </div>
+          )}
+        </div>
+      )}
+
       <button
-        key={isUpdateMode ? "update-event" : "add-event"}
-        onClick={isUpdateMode ? handleUpdateEvent : handleAddEvent}
+        key={`toggle-add-form-${showAddForm}`}
+        className={`addHome ${showAddForm ? "showAddForm" : ""}`}
+        onClick={toggleAddForm}
       >
-        {isUpdateMode ? "Update" : "Add"}
+        {showAddForm ? "Cancel" : "Add new event"}
       </button>
-      {error && <div key="error" className="error">Something went wrong!</div>}
     </div>
-  )}
-
-<button
-  key={`toggle-add-form-${showAddForm}`}
-  className={`addHome ${showAddForm ? 'showAddForm' : ''}`}
-  onClick={toggleAddForm}
->
-  {showAddForm ? "Cancel" : "Add new event"}
-</button>
-
-</div>
-
   );
 };
+
 
 export default AddEvents;

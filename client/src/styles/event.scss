@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-*{
+* {
   font-family: "Poppins", sans-serif;
 }
 
@@ -14,7 +14,7 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  margin-left: calc(10% - -50px); /* Adjust the value as needed */
+  margin-left: calc(10% - -40px); /* Adjust the value as needed */
 }
 
 .form.shifted {
@@ -133,12 +133,21 @@
   background-color: green;
 }
 
+
 h1 {
   font-size: 3rem;
   font-weight: bold;
   padding-bottom: 30px;
-  transform: translateX(0%) translateX(var(--translateX));
+  transform: translateX(60%);
   margin-top: 15px;
+}
+
+h1.showAddForm {
+  transform: translateX(12%) !important; /* Move the h1 to the right by 10% when showAddForm is true */
+}
+
+h1.showEvents {
+  transform: translateX(0%); /* Move the h1 to the left when showEvents is true */
 }
 
 @media screen and (max-width: 992px) {
