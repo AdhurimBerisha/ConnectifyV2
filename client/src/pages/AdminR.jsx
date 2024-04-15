@@ -4,7 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const Register = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({
     username: "",
@@ -18,14 +18,24 @@ const Register = () => {
   const [successMessage, setSuccessMessage] = useState(null);
 
   const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setInputs((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8800/api/auth/register", inputs);
+      const response = await axios.post(
+        "http://localhost:8800/api/auth/register",
+        {
+          ...inputs,
+          isAdmin: 'yes', // Always set isAdmin to 'yes'
+        }
+      );
 
       setSuccessMessage(response.data);
       setErr(null);
@@ -38,8 +48,7 @@ const Register = () => {
         lastName: "",
       });
 
-
-      navigate('/adminl');
+      // navigate("/adminl");
     } catch (err) {
       setSuccessMessage(null);
       setErr(err.response?.data || "An unexpected error occurred.");
@@ -100,6 +109,7 @@ const Register = () => {
               value={inputs.password}
               onChange={handleChange}
             />
+
             {err && <p style={{ color: "red" }}>{err}</p>}
             {successMessage && (
               <p style={{ color: "green" }}>{successMessage}</p>

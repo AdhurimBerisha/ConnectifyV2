@@ -16,23 +16,28 @@ export const register = (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
+    // Set isAdmin to 'yes' directly in the insert query
     const insertQuery =
-      "INSERT INTO users (`username`,`email`,`password`,`firstName`,`lastName`) VALUES (?)";
+      "INSERT INTO users (`username`,`email`,`password`,`firstName`,`lastName`,`isAdmin`) VALUES (?, ?, ?, ?, ?, 'yes')";
 
     const values = [
       req.body.username,
       req.body.email,
       hashedPassword,
       req.body.firstName,
-      req.body.lastName,
+      req.body.lastName
     ];
 
-    pool.query(insertQuery, [values], (err, data) => {
+    pool.query(insertQuery, values, (err, data) => {
       if (err) return res.status(500).json(err);
       return res.status(200).json("User has been created");
     });
   });
 };
+
+
+
+
 
 export const login = (req, res) => {
     const q = "SELECT * FROM users WHERE username = ?";
